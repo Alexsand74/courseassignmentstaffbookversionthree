@@ -6,23 +6,26 @@ import static java.lang.System.*;
 
 public class WorkWithEmployeeBook {
     // вывод одного экземпляра класса Employees в консоль со всеми полями
-    public static void printOneEmployees (Employee employees){
-        out.println (employees.toString()); // обращаемся к переопределенному классу toString
+    public static void printOneEmployees(Employee employees) {
+        out.println(employees.toString()); // обращаемся к переопределенному экземпляру класса toString
     }
+
     // выводим ВЫВОДИМ СПИСОК ДАННЫХ О ВСЕХ СОТРУДНИКАХ
-    public static void printAllEmployees (Employee[] empl, int size) {
+    public static void printAllEmployees(Employee[] empl, int size) {
         for (int i = 0; i < size; i++) {
-            printOneEmployees ( empl[i]);
+            printOneEmployees(empl[i]);
         }
     }
+
     // выводим ВЫВОДИМ СУММУ ЗАРПЛАТ ВСЕХ СОТРУДНИКОВ
-    public static  void sumAllSalariesEmployees(Employee[] empl, int size) {
+    public static void sumAllSalariesEmployees(Employee[] empl, int size) {
         int sumAllSalaries = 0;
         for (int i = 0; i < size; i++) {
             sumAllSalaries += empl[i].getSalary();
         }
         out.println("Сумма зарплат всех сотрудников = " + sumAllSalaries);
     }
+
     // вывод ВЫВОДИМ СРЕДНЮЮ ЗАРПЛАТУ ВСЕХ СОТРУДНИКОВ
     public static void averageAllSalariesEmployees(Employee[] empl, int size) {
         int summa = 0;
@@ -34,31 +37,6 @@ public class WorkWithEmployeeBook {
         out.println("Средняя зарплата всех сотрудников = " + averageAllSalaries);
     }
 
-    // вывод СОТРУДНИКА c минимальной зарплатой является
-    public static void minAllSalariesEmployees(Employee[] empl, int size) {
-        int sumAllSalaries = empl[0].getSalary();
-        int minSalaryIndex = 0;
-        for (int i = 1; i < size; i++) {
-            if (sumAllSalaries > empl[i].getSalary()) {
-                sumAllSalaries = empl[i].getSalary();
-                minSalaryIndex = i;
-            }
-        }
-        printOneEmployees(empl[minSalaryIndex]);
-    }
-
-    // вывод СОТРУДНИКА c максимальной зарплатой является
-    public static void maxAllSalariesEmployees(Employee[] empl, int size) {
-        int sumAllSalaries = empl[0].getSalary();
-        int maxSalaryIndex = 0;
-        for (int i = 1; i < size; i++) {
-            if (sumAllSalaries < empl[i].getSalary()) {
-                sumAllSalaries = empl[i].getSalary();
-                maxSalaryIndex = i;
-            }
-        }
-        printOneEmployees(empl[maxSalaryIndex]);
-    }
 
     // ввод числа с клавиатуры в программу
     public static int inputNumbersInt() {
@@ -89,7 +67,7 @@ public class WorkWithEmployeeBook {
     }
 
     //ВЫВОДИМ СПИСОК Имен Отчеств и Фамилий ВСЕХ СОТРУДНИКОВ
-    public static  void printAllsurnamesEmployees(Employee[] empl , int size) {
+    public static void printAllsurnamesEmployees(Employee[] empl, int size) {
         for (int i = 0; i < size; i++) {
             out.println("   " + empl[i].getName() + " " + empl[i].getMiddlename() + " " + empl[i].getSurname());
         }
@@ -119,5 +97,25 @@ public class WorkWithEmployeeBook {
         }
         out.println();
     }
+    // вывод СОТРУДНИКА c максимальной зарплатой является
+    public static void maxAllSalariesEmployees(Employee[] empl, int size) {
+        Employee emp = empl[0];
+        for (int i = 1; i < size; i++) {
+            if (emp.getSalary() > empl[i].getSalary()) {
+                emp = empl[i];
+            }
+        }
+        printOneEmployees(emp);
+    }
 
+    // вывод СОТРУДНИКА c минимальной зарплатой является
+    public static void minAllSalariesEmployees(Employee[] empl, int size) {
+        Employee emp = empl[0];
+        for (int i = 1; i < size; i++) {
+            if (emp.getSalary() > empl[i].getSalary()) {
+                emp = empl[i];
+            }
+       }
+        printOneEmployees(emp);
+    }
 }
